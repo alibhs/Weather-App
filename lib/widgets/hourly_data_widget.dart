@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app/model/weather_data.dart';
 import 'package:weather_app/utils/custom_colors.dart';
 
 import '../controller/global_controller.dart';
@@ -51,7 +50,7 @@ class HourlyDataWidget extends StatelessWidget {
               },
               child: Container(
                 width: 80,
-                margin: EdgeInsets.only(left: 8, right: 5),
+                margin: const EdgeInsets.only(left: 8, right: 5),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     boxShadow: [

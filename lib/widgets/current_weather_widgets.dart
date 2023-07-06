@@ -13,7 +13,7 @@ class CurrentWeatherWidget extends StatelessWidget {
       children: [
         //tempeture area
         tempeatureAreaWidget(),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         //more details - windspeed , huminity, clouds
         currentWeatherMoreDetailsWidget(),
       ],
@@ -29,7 +29,7 @@ class CurrentWeatherWidget extends StatelessWidget {
             Container(
               height: 60,
               width: 60,
-              padding: EdgeInsets.all(6),
+              padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
                   color: CustomColors.cardColor,
                   borderRadius: BorderRadius.circular(15)),
@@ -38,7 +38,7 @@ class CurrentWeatherWidget extends StatelessWidget {
             Container(
               height: 60,
               width: 60,
-              padding: EdgeInsets.all(6),
+              padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
                   color: CustomColors.cardColor,
                   borderRadius: BorderRadius.circular(15)),
@@ -47,7 +47,7 @@ class CurrentWeatherWidget extends StatelessWidget {
             Container(
               height: 60,
               width: 60,
-              padding: EdgeInsets.all(6),
+              padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
                   color: CustomColors.cardColor,
                   borderRadius: BorderRadius.circular(15)),
@@ -55,7 +55,7 @@ class CurrentWeatherWidget extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -64,7 +64,7 @@ class CurrentWeatherWidget extends StatelessWidget {
               width: 60,
               child: Text(
                 "${weatherDataCurrent.current.windSpeed} km/h",
-                style: TextStyle(fontSize: 12),
+                style: const TextStyle(fontSize: 12),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -73,7 +73,7 @@ class CurrentWeatherWidget extends StatelessWidget {
               width: 60,
               child: Text(
                 "${weatherDataCurrent.current.clouds}%",
-                style: TextStyle(fontSize: 12),
+                style: const TextStyle(fontSize: 12),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -82,7 +82,7 @@ class CurrentWeatherWidget extends StatelessWidget {
               width: 60,
               child: Text(
                 "${weatherDataCurrent.current.humidity}%",
-                style: TextStyle(fontSize: 12),
+                style: const TextStyle(fontSize: 12),
                 textAlign: TextAlign.center,
               ),
             ),

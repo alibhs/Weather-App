@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/controller/global_controller.dart';
+import 'package:weather_app/widgets/comfort_level.dart';
 import 'package:weather_app/widgets/header_widgets.dart';
 import 'package:weather_app/widgets/hourly_data_widget.dart';
 
+import '../utils/custom_colors.dart';
 import '../widgets/current_weather_widgets.dart';
+import '../widgets/daily_data_forecast.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,8 +26,17 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: SafeArea(
           child: Obx(() => globalController.checkLoading().isTrue
-              ? const Center(
-                  child: CircularProgressIndicator(),
+              ? Center(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        "assets/icons/clouds.png",
+                        height: 200,
+                        width: 200,
+                      ),
+                      const CircularProgressIndicator(),
+                    ],
+                  ),
                 )
               : Center(
                   child: ListView(
@@ -44,6 +56,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             .getWeatherData()
                             .getHourlyWeather(),
                       ),
+                      DailyDataForecast(
+                        weatherDataDaily:
+                            globalController.getWeatherData().getDailyWeather(),
+                      ),
+                      Container(height: 1, color: CustomColors.dividerLine),
+                      const SizedBox(height: 10),
+                      ComfortLevel(
+                          weatherDataCurrent: globalController
+                              .getWeatherData()
+                              .getCurrentWeather())
                     ],
                   ),
                 ))),

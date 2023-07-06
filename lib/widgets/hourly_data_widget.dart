@@ -42,7 +42,7 @@ class HourlyDataWidget extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: weatherDataHourly.hourly.length > 12
-            ? 12
+            ? 14
             : weatherDataHourly.hourly.length,
         itemBuilder: (context, index) {
           return Obx((() => GestureDetector(
@@ -68,6 +68,8 @@ class HourlyDataWidget extends StatelessWidget {
                           ])
                         : null),
                 child: HourlyDetails(
+                    index: index,
+                    cardIndex: cardIndex.toInt(),
                     temp: weatherDataHourly.hourly[index].temp!,
                     timeStamp: weatherDataHourly.hourly[index].dt!,
                     weatherIcon:
@@ -84,6 +86,8 @@ class HourlyDataWidget extends StatelessWidget {
 class HourlyDetails extends StatelessWidget {
   int temp;
   int timeStamp;
+  int index;
+  int cardIndex;
   String weatherIcon;
 
   String getTime(final timeStamp) {
@@ -95,6 +99,8 @@ class HourlyDetails extends StatelessWidget {
   HourlyDetails(
       {Key? key,
       required this.timeStamp,
+      required this.index,
+      required this.cardIndex,
       required this.temp,
       required this.weatherIcon})
       : super(key: key);
@@ -106,7 +112,10 @@ class HourlyDetails extends StatelessWidget {
       children: [
         Container(
             margin: const EdgeInsets.only(top: 10),
-            child: Text(getTime(timeStamp))),
+            child: Text(
+              getTime(timeStamp),
+              style: TextStyle(color: cardIndex == index ? Colors.white : null),
+            )),
         Container(
           margin: const EdgeInsets.all(5),
           child: Image.asset(
@@ -117,7 +126,9 @@ class HourlyDetails extends StatelessWidget {
         ),
         Container(
           margin: const EdgeInsets.only(bottom: 10),
-          child: Text("$temp"),
+          child: Text("$temp",
+              style:
+                  TextStyle(color: cardIndex == index ? Colors.white : null)),
         )
       ],
     );
